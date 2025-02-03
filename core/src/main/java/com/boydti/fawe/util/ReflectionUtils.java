@@ -1,6 +1,5 @@
 package com.boydti.fawe.util;
 
-import java.lang.invoke.MethodHandles;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
@@ -9,10 +8,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.*;
-
-import sun.reflect.ConstructorAccessor;
-import sun.reflect.FieldAccessor;
-import sun.reflect.ReflectionFactory;
 
 /**
  * @author DPOH-VAR
@@ -111,17 +106,27 @@ public class ReflectionUtils {
         parms[0] = value;
         parms[1] = Integer.valueOf(ordinal);
         System.arraycopy(additionalValues, 0, parms, 2, additionalValues.length);
-        return enumClass.cast(getConstructorAccessor(enumClass, additionalTypes).newInstance(parms));
+        return enumClass.getConstructor(additionalTypes).newInstance(parms);
     }
 
-    private static ConstructorAccessor getConstructorAccessor(Class<?> enumClass,
-                                                              Class<?>[] additionalParameterTypes) throws NoSuchMethodException {
-        Class<?>[] parameterTypes = new Class[additionalParameterTypes.length + 2];
-        parameterTypes[0] = String.class;
-        parameterTypes[1] = int.class;
-        System.arraycopy(additionalParameterTypes, 0,
-                parameterTypes, 2, additionalParameterTypes.length);
-        return ReflectionFactory.getReflectionFactory().newConstructorAccessor(enumClass.getDeclaredConstructor(parameterTypes));
+    /**
+     * From https://stackoverflow.com/a/69418150/17528745
+     * NOTE Need add args: --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED
+     */
+    public static Field getModifiersField(Class<?> fieldClass) {
+        Field modifiers = null;
+        try {
+            Method getDeclaredFields0 = Class.class.getDeclaredMethod("getDeclaredFields0", boolean.class);
+            getDeclaredFields0.setAccessible(true);
+            Field[] fields = (Field[]) getDeclaredFields0.invoke(fieldClass, false);
+            for (Field each : fields) {
+                if ("modifiers".equals(each.getName())) {
+                    modifiers = each;
+                    break;
+                }
+            }
+        } catch (Throwable ignore) {}
+        return modifiers;
     }
 
     public static void setFailsafeFieldValue(Field field, Object target, Object value)
@@ -134,22 +139,19 @@ public class ReflectionUtils {
         // not be final anymore, thus tricking reflection into
         // letting us modify the static final field
         if (Modifier.isFinal(field.getModifiers())) {
-            try {
-                Field lookupField = MethodHandles.Lookup.class.getDeclaredField("IMPL_LOOKUP");
-                lookupField.setAccessible(true);
-
+            Field modifiersField = getModifiersField(field.getClass());
+            if (modifiersField != null) {
+                modifiersField.setAccessible(true);
                 // blank out the final bit in the modifiers int
-                ((MethodHandles.Lookup) lookupField.get(null))
-                        .findSetter(Field.class, "modifiers", int.class)
-                        .invokeExact(field, field.getModifiers() & ~Modifier.FINAL);
-            } catch (Throwable e) {
-                e.printStackTrace();
+                modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
             }
         }
 
         try {
-            FieldAccessor fa = ReflectionFactory.getReflectionFactory().newFieldAccessor(field, false);
-            fa.set(target, value);
+            //FieldAccessor fa = ReflectionFactory.getReflectionFactory().newFieldAccessor(field, false);
+            field.setAccessible(true);
+            field.set(target, value);
+            //fa.set(target, value);
         } catch (NoSuchMethodError error) {
             field.set(target, value);
         }

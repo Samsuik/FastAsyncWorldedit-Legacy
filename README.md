@@ -10,6 +10,10 @@ FAWE is a fork of WorldEdit that has huge speed and memory improvements and cons
 
 It is available for Bukkit, Forge, Sponge and Nukkit.
 
+## Additions
+* [Java 17 compatibility](https://github.com/DawningW/FastAsyncWorldedit-Legacy/commit/41c4ef8c245b4a8cf212606a00e6d093a47a9b6d)
+* [Ytnoos security patch](https://github.com/ytnoos/FastAsyncWorldedit-Legacy/commit/12a01983c9650e4b1a4dbd067344d88cd89be1b1)
+
 ## Links 
 
 * [Spigot Page](https://www.spigotmc.org/threads/fast-async-worldedit.100104/)

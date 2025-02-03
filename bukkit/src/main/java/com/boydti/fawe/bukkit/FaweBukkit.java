@@ -375,9 +375,11 @@ public class FaweBukkit implements IFawe, Listener {
                 fieldDirtyCount.setAccessible(true);
                 int mod = fieldDirtyCount.getModifiers();
                 if ((mod & Modifier.VOLATILE) == 0) {
-                    Field modifiersField = Field.class.getDeclaredField("modifiers");
-                    modifiersField.setAccessible(true);
-                    modifiersField.setInt(fieldDirtyCount, mod + Modifier.VOLATILE);
+                    Field modifiersField = ReflectionUtils.getModifiersField(fieldDirtyCount.getClass());
+                    if (modifiersField != null) {
+                        modifiersField.setAccessible(true);
+                        modifiersField.setInt(fieldDirtyCount, mod + Modifier.VOLATILE);
+                    }
                 }
             } catch (Throwable ignore) {}
         }
@@ -428,9 +430,11 @@ public class FaweBukkit implements IFawe, Listener {
                     fieldDirtyCount.setAccessible(true);
                     int mod = fieldDirtyCount.getModifiers();
                     if ((mod & Modifier.VOLATILE) == 0) {
-                        Field modifiersField = Field.class.getDeclaredField("modifiers");
-                        modifiersField.setAccessible(true);
-                        modifiersField.setInt(fieldDirtyCount, mod + Modifier.VOLATILE);
+                        Field modifiersField = ReflectionUtils.getModifiersField(fieldDirtyCount.getClass());
+                        if (modifiersField != null) {
+                            modifiersField.setAccessible(true);
+                            modifiersField.setInt(fieldDirtyCount, mod + Modifier.VOLATILE);
+                        }
                     }
                 } catch (Throwable ignore) {
                 }

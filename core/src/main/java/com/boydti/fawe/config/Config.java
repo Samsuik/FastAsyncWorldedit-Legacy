@@ -3,6 +3,7 @@ package com.boydti.fawe.config;
 import com.boydti.fawe.Fawe;
 import com.boydti.fawe.configuration.MemorySection;
 import com.boydti.fawe.configuration.file.YamlConfiguration;
+import com.boydti.fawe.util.ReflectionUtils;
 import com.boydti.fawe.util.StringMan;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -445,16 +446,10 @@ public class Config {
     private void setAccessible(Field field) throws NoSuchFieldException, IllegalAccessException {
         field.setAccessible(true);
         if (Modifier.isFinal(field.getModifiers())) {
-            try {
-                Field lookupField = MethodHandles.Lookup.class.getDeclaredField("IMPL_LOOKUP");
-                lookupField.setAccessible(true);
-
-                // blank out the final bit in the modifiers int
-                ((MethodHandles.Lookup) lookupField.get(null))
-                        .findSetter(Field.class, "modifiers", int.class)
-                        .invokeExact(field, field.getModifiers() & ~Modifier.FINAL);
-            } catch (Throwable e) {
-                e.printStackTrace();
+            Field modifiersField = ReflectionUtils.getModifiersField(field.getClass());
+            if (modifiersField != null) {
+                modifiersField.setAccessible(true);
+                modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
             }
         }
     }
