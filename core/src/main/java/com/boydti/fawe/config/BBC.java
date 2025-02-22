@@ -180,7 +180,7 @@ public enum BBC {
     FAST_ENABLED("Fast mode enabled. History and edit restrictions will be bypassed.", "WorldEdit.General"),
     FAST_DISABLED("Fast mode disabled", "WorldEdit.General"),
 
-    PLACE_ENABLED("Now placing at pos #1.", "WorldEdit.General"),
+    PLACE_ENABLED("Now placing at &dpos #1.", "WorldEdit.General"),
     PLACE_DISABLED("Now placing at the block you stand in.", "WorldEdit.General"),
 
     KILL_SUCCESS("Killed %s0 entities in a radius of %s1.", "WorldEdit.Utility"),
@@ -213,9 +213,9 @@ public enum BBC {
 
     SELECTOR_FUZZY_POS1("Region set and expanded from %s0 %s1.", "WorldEdit.Selector"),
     SELECTOR_FUZZY_POS2("Added expansion of %s0 %s1.", "WorldEdit.Selector"),
-    SELECTOR_POS("pos%s0 set to %s1 (%s2).", "WorldEdit.Selector"),
-    SELECTOR_CENTER("Center set to %s0 (%s1).", "WorldEdit.Selector"),
-    SELECTOR_RADIUS("Radius set to %s0 (%s1).", "WorldEdit.Selector"),
+    SELECTOR_POS("&dPosition #%s0 &7set to &f%s1 &7(%s2).", "WorldEdit.Selector"),
+    SELECTOR_CENTER("Center set to &f%s0 &7(%s1).", "WorldEdit.Selector"),
+    SELECTOR_RADIUS("Radius set to &f%s0 &7(%s1).", "WorldEdit.Selector"),
     SELECTOR_EXPANDED("Expanded region to %s0 (%s1)", "WorldEdit.Selector"),
     SELECTOR_INVALID_COORDINATES("Invalid coordinates %s0", "WorldEdit.Selector"),
     SELECTOR_ALREADY_SET("Position already set.", "WorldEdit.Selector"),
@@ -226,11 +226,11 @@ public enum BBC {
 
     COMMAND_INVALID_SYNTAX("The command was not used properly (no more help available).", "WorldEdit.Command"),
 
-    COMMAND_CLARIFYING_BRACKET("&7Added clarifying bracket for &c%s0", "WorldEdit.Help"),
-    HELP_SUGGEST("&7Couldn't find %s0. Maybe try one of &c%s1 &7?", "WorldEdit.Help"),
+    COMMAND_CLARIFYING_BRACKET("&7Added clarifying bracket for &d%s0", "WorldEdit.Help"),
+    HELP_SUGGEST("&7Couldn't find %s0. Maybe try one of &d%s1 &7?", "WorldEdit.Help"),
     HELP_HEADER_CATEGORIES("Command Types", "WorldEdit.Help"),
     HELP_HEADER_SUBCOMMANDS("Subcommands", "WorldEdit.Help"),
-    HELP_HEADER_COMMAND("&cHelp for: &7%s0", "WorldEdit.Help"),
+    HELP_HEADER_COMMAND("&dHelp for: &7%s0", "WorldEdit.Help"),
     HELP_ITEM_ALLOWED("&a%s0&8 - &7%s1", "WorldEdit.Help"),
     HELP_ITEM_DENIED("&c%s0&8 - &7%s1", "WorldEdit.Help"),
     HELP_HEADER("Help: page %s0/%s1", "WorldEdit.Help"),
@@ -294,48 +294,48 @@ public enum BBC {
     SEL_MAX("%s0 points maximum.", "Selection"),
     SEL_FUZZY("Fuzzy selector: Left click to select all contingent blocks, right click to add. To select an air cavity, use //pos1.", "Selection"),
     SEL_CONVEX_POLYHEDRAL("Convex polyhedral selector: Left click=First vertex, right click to add more.", "Selection"),
-    SEL_LIST("For a list of selection types use:&c //sel list", "Selection"),
+    SEL_LIST("For a list of selection types use:&d //sel list", "Selection"),
     SEL_MODES("Select one of the modes below:", "Selection"),
 
-    TIP_SEL_LIST("Tip: See the different selection modes with &c//sel list", "Tips"),
+    TIP_SEL_LIST("Tip: See the different selection modes with &d//sel list", "Tips"),
     TIP_SELECT_CONNECTED("Tip: Select all connected blocks with //sel fuzzy", "Tips"),
-    TIP_SET_POS1("Tip: Use pos1 as a pattern with &c//set pos1", "Tips"),
-    TIP_FARWAND("Tip: Select distant points with &c//farwand", "Tips"),
+    TIP_SET_POS1("Tip: Use pos1 as a pattern with &d//set pos1", "Tips"),
+    TIP_FARWAND("Tip: Select distant points with &d//farwand", "Tips"),
 
     // cut
-    TIP_LAZYCUT("&7Tip: It is safer to use &c//lazycut", "Tips"),
+    TIP_LAZYCUT("&7Tip: It is safer to use &d//lazycut", "Tips"),
     // set
-    TIP_FAST("&7Tip: Set fast and without undo using &c//fast", "Tips"),
-    TIP_CANCEL("&7Tip: You can &c//cancel &7an edit in progress", "Tips"),
-    TIP_MASK("&7Tip: Set a global destination mask with &c/gmask", "Tips"),
-    TIP_MASK_ANGLE("Tip: Replace upward slopes of 3-20 blocks using&c //replace /[-20][-3] bedrock", "Tips"),
-    TIP_SET_LINEAR("&7Tip: Set blocks linearly with&c //set #l3d[wood,bedrock]", "Tips"),
-    TIP_SURFACE_SPREAD("&7Tip: Spread a flat surface with&c //set #surfacespread[5][0][5][#existing]", "Tips"),
-    TIP_SET_HAND("&7Tip: Use your current hand with &c//set hand", "Tips"),
+    TIP_FAST("&7Tip: Set fast and without undo using &d//fast", "Tips"),
+    TIP_CANCEL("&7Tip: You can &d//cancel &7an edit in progress", "Tips"),
+    TIP_MASK("&7Tip: Set a global destination mask with &d/gmask", "Tips"),
+    TIP_MASK_ANGLE("Tip: Replace upward slopes of 3-20 blocks using&d //replace /[-20][-3] bedrock", "Tips"),
+    TIP_SET_LINEAR("&7Tip: Set blocks linearly with&d //set #l3d[wood,bedrock]", "Tips"),
+    TIP_SURFACE_SPREAD("&7Tip: Spread a flat surface with&d //set #surfacespread[5][0][5][#existing]", "Tips"),
+    TIP_SET_HAND("&7Tip: Use your current hand with &d//set hand", "Tips"),
 
     // replace
-    TIP_REPLACE_ID("&7Tip: Replace only the block id:&c //replace woodenstair #id[cobblestair]", "Tips"),
-    TIP_REPLACE_LIGHT("Tip: Remove light sources with&c //replace #brightness[1][15] 0", "Tips"),
+    TIP_REPLACE_ID("&7Tip: Replace only the block id:&d //replace woodenstair #id[cobblestair]", "Tips"),
+    TIP_REPLACE_LIGHT("Tip: Remove light sources with&d //replace #brightness[1][15] 0", "Tips"),
     TIP_TAB_COMPLETE("Tip: The replace command supports tab completion", "Tips"),
 
     // clipboard
-    TIP_FLIP("Tip: Mirror with &c//flip", "Tips"),
-    TIP_DEFORM("Tip: Reshape with &c//deform", "Tips"),
-    TIP_TRANSFORM("Tip: Set a transform with &c//gtransform", "Tips"),
-    TIP_COPYPASTE("Tip: Paste on click with &c//br copypaste", "Tips"),
-    TIP_SOURCE_MASK("Tip: Set a source mask with &c/gsmask <mask>&7", "Tips"),
-    TIP_REPLACE_MARKER("Tip: Replace a block with your full clipboard using &c//replace wool #fullcopy", "Tips"),
-    TIP_PASTE("Tip: Place with &c//paste", "Tips"),
+    TIP_FLIP("Tip: Mirror with &d//flip", "Tips"),
+    TIP_DEFORM("Tip: Reshape with &d//deform", "Tips"),
+    TIP_TRANSFORM("Tip: Set a transform with &d//gtransform", "Tips"),
+    TIP_COPYPASTE("Tip: Paste on click with &d//br copypaste", "Tips"),
+    TIP_SOURCE_MASK("Tip: Set a source mask with &d/gsmask <mask>&7", "Tips"),
+    TIP_REPLACE_MARKER("Tip: Replace a block with your full clipboard using &d//replace wool #fullcopy", "Tips"),
+    TIP_PASTE("Tip: Place with &d//paste", "Tips"),
     TIP_LAZYCOPY("Tip: lazycopy is faster", "Tips"),
-    TIP_DOWNLOAD("Tip: Try out &c//download", "Tips"),
-    TIP_ROTATE("Tip: Orientate with &c//rotate", "Tips"),
-    TIP_COPY_PATTERN("Tip: To use as a pattern try &c#copy", "Tips"),
+    TIP_DOWNLOAD("Tip: Try out &d//download", "Tips"),
+    TIP_ROTATE("Tip: Orientate with &d//rotate", "Tips"),
+    TIP_COPY_PATTERN("Tip: To use as a pattern try &d#copy", "Tips"),
 
     // regen
     TIP_REGEN_0("Tip: Use a biome with /regen [biome]", "Tips"),
     TIP_REGEN_1("Tip: Use a seed with /regen [biome] [seed]", "Tips"),
 
-    TIP_BIOME_PATTERN("Tip: The &c#biome[forest]&7 pattern can be used in any command", "Tips"),
+    TIP_BIOME_PATTERN("Tip: The &d#biome[forest]&7 pattern can be used in any command", "Tips"),
     TIP_BIOME_MASK("Tip: Restrict to a biome with the `$jungle` mask", "Tips"),;
 
 
