@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.imgur.com/Fog5fDB.png">
+  <img src="assets/fawe_logo.png">
 </p>
 
 ---
