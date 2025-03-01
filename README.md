@@ -44,6 +44,8 @@ $ gradlew setupDecompWorkspace
 $ gradlew build
 ```
 
+**Compiled builds** can now be found at `/bukkit/build/libs/`
+
 ## Contributing
 Have an idea for an optimization, or a cool feature?
  - I'll accept most PR's
