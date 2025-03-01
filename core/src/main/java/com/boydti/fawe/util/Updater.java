@@ -22,14 +22,7 @@ public class Updater {
     private String versionString;
 
     public synchronized String getChanges() {
-        if (changes == null) {
-            try (Scanner scanner = new Scanner(new URL("https://empcraft.com/fawe/cl?" + Integer.toHexString(Fawe.get().getVersion().hash)).openStream(), "UTF-8")) {
-                changes = scanner.useDelimiter("\\A").next();
-            } catch (IOException e) {
-                e.printStackTrace();
-                return "";
-            }
-        }
+        changes = ""; // Unofficial version
         return changes;
     }
 
@@ -42,18 +35,7 @@ public class Updater {
     }
 
     public synchronized void confirmUpdate(FawePlayer fp) {
-        if (pending && fp.hasPermission("fawe.admin")) {
-            Fawe.debug("Updated FAWE to " + versionString + " @ " + pendingFile);
-            String url = "https://empcraft.com/fawe/cl?" + Integer.toHexString(Fawe.get().getVersion().hash);
-            new Message().prefix().text("A FAWE update is available:")
-            .text("\n&8 - &a/fawe update &8 - &7Updates the plugin and restarts the server to apply the changes")
-                .cmdTip("fawe update")
-            .text("\n&8 - &a/fawe changelog")
-                    .cmdTip("fawe changelog")
-            .text("&8 - &7( &9&o" + url + " &7)")
-                    .link(url)
-            .send(fp);
-        }
+        // Unofficial version
     }
 
     public synchronized boolean installUpdate(FawePlayer fp) {
@@ -109,7 +91,8 @@ public class Updater {
                             
                             installUpdate(null);
                             Fawe.debug("Updated FAWE to " + versionString + " @ " + pendingFile);
-                            MainUtil.sendAdmin("&a/restart&7 to update FAWE with these changes: &c/fawe changelog &7or&c " + "https://empcraft.com/fawe/cl?" + Integer.toHexString(currentVersion.hash));
+                            // Unofficial version
+                            // MainUtil.sendAdmin("&a/restart&7 to update FAWE with these changes: &c/fawe changelog &7or&c " + "https://empcraft.com/fawe/cl?" + Integer.toHexString(currentVersion.hash));
                         } else if (!Settings.IMP.UPDATE.equalsIgnoreCase("false")) {
                             pendingFile = finalFile;
                             destFile = new File(jarFile.getParent(), "update" + File.separator + jarFile.getName());

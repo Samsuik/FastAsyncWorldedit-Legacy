@@ -62,25 +62,14 @@ public class WorldEditCommands {
     )
     public void version(Actor actor) throws WorldEditException {
         FaweVersion fVer = Fawe.get().getVersion();
-        String fVerStr = fVer == null ? "unknown" : fVer.year + "." + fVer.month + "." + fVer.day + "-" + Integer.toHexString(fVer.hash) + "-" + fVer.build;
-        actor.print(BBC.getPrefix() + "FAWE " + fVerStr + " by Empire92");
+        actor.print(BBC.getPrefix() + "FAWE Legacy" + " by Empire92");
         if (fVer != null) {
             actor.printDebug("------------------------------------");
             FaweVersion version = Fawe.get().getVersion();
-            Date date = new GregorianCalendar(2000 + version.year, version.month - 1, version.day).getTime();
-            actor.printDebug(" - DATE: " + date.toLocaleString());
-            actor.printDebug(" - COMMIT: " + Integer.toHexString(version.hash));
-            actor.printDebug(" - BUILD: #" + version.build);
-            actor.printDebug(" - PLATFORM: " + Settings.IMP.PLATFORM);
+            actor.printDebug(" - Edition: Legacy");
+            actor.printDebug(" - FAWE Version: " + fVer.fawe);
+            actor.printDebug(" - WorldEdit Version: " + fVer.we);
             Updater updater = Fawe.get().getUpdater();
-            if (updater == null) {
-                actor.printDebug(" - UPDATES: DISABLED");
-            } else if (updater.isOutdated()) {
-                actor.printDebug(" - UPDATES: " + updater.getChanges().split("\n").length + " (see /fawe cl)");
-            } else {
-                actor.printDebug(" - UPDATES: Latest Version");
-            }
-            actor.printDebug("------------------------------------");
         }
         actor.print(BBC.getPrefix() + "WorldEdit " + WorldEdit.getVersion() + " by sk89q");
         PlatformManager pm = we.getPlatformManager();
@@ -141,42 +130,12 @@ public class WorldEditCommands {
     )
     @CommandPermissions("worldedit.changelog")
     public void changelog(Actor actor) throws WorldEditException {
-        try {
-            Updater updater = Fawe.get().getUpdater();
-            String changes = updater != null ? updater.getChanges() : null;
-
-            String url = "https://empcraft.com/fawe/cl?" + Integer.toHexString(Fawe.get().getVersion().hash);
-            if (changes == null) {
-                try (Scanner scanner = new Scanner(new URL(url).openStream(), "UTF-8")) {
-                    changes = scanner.useDelimiter("\\A").next();
-                }
-            }
-            changes = changes.replaceAll("#([0-9]+)", "github.com/boy0001/FastAsyncWorldedit/issues/$1");
-
-            String[] split = changes.substring(1).split("[\n](?! )");
-            if (changes.length() <= 1) actor.print(BBC.getPrefix() + "No description available");
-            else {
-                StringBuilder msg = new StringBuilder();
-                msg.append(BBC.getPrefix() + split.length + " commits:");
-                for (String change : split) {
-                    String[] split2 = change.split("\n    ");
-                    msg.append("\n&a&l" + split2[0]);
-                    if (split2.length != 0) {
-                        for (int i = 1; i < split2.length; i++) {
-                            msg.append('\n');
-                            String[] split3 = split2[i].split("\n");
-                            String subChange = "&8 - &7" + StringMan.join(split3, "\n&7   ");
-                            msg.append(subChange);
-                        }
-                    }
-                }
-                msg.append("\n&7More info: &9&o" + url);
-                msg.append("\n&7Discuss: &9&ohttps://discord.gg/ngZCzbU");
-                actor.print(BBC.color(msg.toString()));
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        actor.print(String.join("\n", Arrays.asList(
+                "-------------------------------------------",
+                "This is an unofficial build of FAWE",
+                "FAWE Legacy is no longer maintained",
+                "-------------------------------------------"
+        )));
     }
 
     @Command(

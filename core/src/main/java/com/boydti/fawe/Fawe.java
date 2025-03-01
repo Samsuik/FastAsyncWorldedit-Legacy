@@ -443,9 +443,10 @@ public class Fawe {
             String versionString = scanner.next().trim();
             scanner.close();
             this.version = new FaweVersion(versionString);
-            Settings.IMP.DATE = new Date(100 + version.year, version.month, version.day).toGMTString();
-            Settings.IMP.BUILD = "https://ci.athion.net/job/FastAsyncWorldEdit/" + version.build;
-            Settings.IMP.COMMIT = "https://github.com/boy0001/FastAsyncWorldedit/commit/" + Integer.toHexString(version.hash);
+            // No longer supported by FAWE support
+            // Settings.IMP.DATE = new Date(100 + version.year, version.month, version.day).toGMTString();
+            // Settings.IMP.BUILD = "https://ci.athion.net/job/FastAsyncWorldEdit/" + version.build;
+            // Settings.IMP.COMMIT = "https://github.com/boy0001/FastAsyncWorldedit/commit/" + Integer.toHexString(version.hash);
         } catch (Throwable ignore) {}
         Settings.IMP.reload(file);
         // Setting up message.yml

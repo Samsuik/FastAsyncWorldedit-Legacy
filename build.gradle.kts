@@ -6,7 +6,7 @@ plugins {
 // delete("target")
 
 group = "com.boydti.fawe"
-version = "6.1.7.2"
+version = "1.0.0-legacy-6.1.7.2" // FAWE version - Edition - WE version
 
 subprojects {
     apply(plugin = "java")
