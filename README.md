@@ -16,7 +16,7 @@ It is available for Bukkit, Forge, Sponge and Nukkit.
 
 ## Installation
 Drop the FAWE jar in your `/plugins` folder and install [WorldEdit 6.1.7.2](https://dev.bukkit.org/projects/worldedit/files/2431372). \
-FAWE will attempt to download WorldEdit but at the moment of writing this is very likely to fail. \
+FAWE will attempt to download WorldEdit but at the moment of writing this is very likely to fail.
 
 To run in Java 17 you have to add `--add-opens java.base/java.lang=ALL-UNNAMED` and `--add-opens java.base/java.lang.reflect=ALL-UNNAMED` before the `-jar` flag. \
 These flags will allow reflection to edit the `final` [modifier](https://bugs.openjdk.org/browse/JDK-8210522) of fields without breaking compatibility for Java 8.
