@@ -18,6 +18,6 @@
 - [] I read the information at the top of the issue stating that versions up to 1.12.2 are classified as legacy and receive no support. Given that, I understand that my issue won't receive an answer or fix anytime soon since my version is very old and I should update my server to a version past 1.14.4 of minecraft.
 - [] I made sure that I'm using FAWE on 1.12.2 or lower
 - [] I included a `/fawe debugpaste` link
-- [] I made sure there aren't duplicates of this report [(Use Search)](https://github.com/boy0001/FastAsyncWorldedit/issues?utf8=%E2%9C%93&q=is%3Aissue)
+- [] I made sure there aren't duplicates of this report [(Use Search)](https://github.com/SerlithNetwork/FastAsyncWorldedit-Legacy/issues?utf8=%E2%9C%93&q=is%3Aissue)
 - [] I made sure I am using an up-to-date version of [FAWE < 1.12.2](https://ci.athion.net/job/FastAsyncWorldEdit/)
 - [] I made sure the bug/error is not caused by any other plugin

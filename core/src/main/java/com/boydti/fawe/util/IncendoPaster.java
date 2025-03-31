@@ -209,8 +209,8 @@ public final class IncendoPaster {
         b.append("OS Version: ").append(System.getProperty("os.version")).append('\n');
         b.append("OS Arch: ").append(System.getProperty("os.arch")).append('\n');
         b.append("# Okay :D Great. You are now ready to create your bug report!");
-        b.append("\n# You can do so at https://github.com/boy0001/FastAsyncWorldedit/issues");
-        b.append("\n# or via our Discord at https://discord.gg/ngZCzbU");
+        b.append("\n# You can do so at https://github.com/SerlithNetwork/FastAsyncWorldedit-Legacy/issues");
+        b.append("\n# Remember this project is a legacy version, and support is not guaranteed!");
         incendoPaster.addFile(new IncendoPaster.PasteFile("information", b.toString()));
 
         try {

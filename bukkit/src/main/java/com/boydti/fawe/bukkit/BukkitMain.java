@@ -58,7 +58,7 @@ public class BukkitMain extends JavaPlugin {
         Plugin toLoad = null;
         if (Bukkit.getPluginManager().getPlugin("WorldEdit") == null) {
             try {
-                File output = new File(this.getDataFolder().getParentFile(), "WorldEdit.jar");
+                File output = new File(this.getDataFolder().getParentFile(), "worldedit-bukkit-6.1.7.2.jar");
                 byte[] weJar = Jars.WE_B_6_1_7_2.download();
                 try (FileOutputStream fos = new FileOutputStream(output)) {
                     fos.write(weJar);
@@ -68,7 +68,7 @@ public class BukkitMain extends JavaPlugin {
                 e.printStackTrace();
                 Fawe.debug("====== INSTALL WORLDEDIT ======");
                 Fawe.debug("FAWE requires WorldEdit to function correctly");
-                Fawe.debug("Info: https://github.com/boy0001/FastAsyncWorldedit/releases/");
+                Fawe.debug("Info: https://github.com/SerlithNetwork/FastAsyncWorldedit-Legacy");
                 Fawe.debug("===============================");
                 return;
             }

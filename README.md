@@ -18,7 +18,7 @@ It is available for Bukkit, Forge, Sponge and Nukkit.
 Drop the FAWE jar in your `/plugins` folder and install [WorldEdit 6.1.7.2](https://dev.bukkit.org/projects/worldedit/files/2431372). \
 FAWE will attempt to download WorldEdit but at the moment of writing this is very likely to fail.
 
-To run in Java 17 you have to add `--add-opens java.base/java.lang=ALL-UNNAMED` and `--add-opens java.base/java.lang.reflect=ALL-UNNAMED` before the `-jar` flag. \
+To run in Java 17 you have to add `--add-opens=java.base/java.lang=ALL-UNNAMED` and `--add-opens=java.base/java.lang.reflect=ALL-UNNAMED` before the `-jar` flag. \
 These flags will allow reflection to edit the `final` [modifier](https://bugs.openjdk.org/browse/JDK-8210522) of fields without breaking compatibility for Java 8.
 ```sh
 # Example server startup script
@@ -37,8 +37,9 @@ These builds **can now be found** at `/bukkit/build/libs/` as Gradle standard.
 
 ## TODO
 Not likely to be added anytime soon:
-1. Either bundle `WorldEdit` or just change the download link.
-2. Use a slightly more updated `WorldEdit` version like 6.1.9
+1. ~~Either bundle `WorldEdit` or just change the download link.~~ ✅
+2. Use a slightly more updated `WorldEdit` version like 6.1.9 🕒
+3. Fix [chunk duplication](https://www.youtube.com/watch?v=hdEVYZ8DWEs) error 🕒
 
 ## Links 
 
