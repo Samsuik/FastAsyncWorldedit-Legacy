@@ -69,7 +69,6 @@ public class WorldEditCommands {
             actor.printDebug(" - Edition: Legacy");
             actor.printDebug(" - FAWE Version: " + fVer.fawe);
             actor.printDebug(" - WorldEdit Version: " + fVer.we);
-            Updater updater = Fawe.get().getUpdater();
         }
         actor.print(BBC.getPrefix() + "WorldEdit " + WorldEdit.getVersion() + " by sk89q");
         PlatformManager pm = we.getPlatformManager();
@@ -110,15 +109,7 @@ public class WorldEditCommands {
             max = 0
     )
     public void update(FawePlayer fp) throws WorldEditException {
-        if (Fawe.get().getUpdater().installUpdate(fp)) {
-            TaskManager.IMP.sync(() -> {
-                fp.executeCommand("restart");
-                return null;
-            });
-            fp.sendMessage(BBC.getPrefix() + "Please restart to finish installing the update");
-        } else {
-            fp.sendMessage(BBC.getPrefix() + "No update is pending");
-        }
+        fp.sendMessage(BBC.getPrefix() + "No update is pending");
     }
 
     @Command(
